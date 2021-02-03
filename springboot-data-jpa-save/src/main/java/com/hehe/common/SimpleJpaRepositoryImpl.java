@@ -39,7 +39,7 @@ public class SimpleJpaRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> {
     @Transactional
     public <S extends T> S save(S entity) {
         //获取ID
-        ID entityId = (ID) entityInformation.getId(entity);
+        ID entityId = (ID) entityInformation.getId(entity);   //self-note: 获取了任意类的jpa中的主键 在下面进行分析  //2021年2月3日16:20:01
         Optional<T> optionalT;
         if (StringUtils.isEmpty(entityId)) {
             String uuid = UUID.randomUUID().toString();
